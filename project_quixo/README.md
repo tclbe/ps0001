@@ -27,5 +27,7 @@ Passing all of them is a good indication that you have done the functions correc
 You only need to submit the `quixo.py` file, and nothing else, in a zip file.
 
 You can just create the zip file yourself, but a [script](./quixo_project_zipper.py) has been created to help in the creation of the zip file for submission.
-Just run the script and follow the prompts.
-If it is unclear, you can let me know.
+
+To use the script, put the zipper.py file and the file to submit in the same folder.
+Run the script and follow the prompts.
+If the prompts are unclear, you can let me know.
