@@ -10,7 +10,7 @@ script_dir = Path(__file__).parent
 expected_filename = 'quixo.py'
 
 filename = input(
-    f"enter submission filename (include the '.py', defaults to '{expected_filename}''): "
+    f"enter submission filename (include the '.py', defaults to '{expected_filename}'): "
 )
 
 if not filename:
@@ -19,7 +19,7 @@ elif filename != expected_filename:
     print(
         f"\033[91mWARNING:\033[0m the filename should be '{expected_filename}', you input '{filename}'"
     )
-    user_in = input("enter 'y' to confirm to continue: ")
+    user_in = input("enter 'y' to continue despite this warning: ")
     if user_in.upper() != 'Y':
         print("exiting...")
         sys.exit()
@@ -40,10 +40,10 @@ if not os.path.exists(filepath):
 filepath = script_dir / filename
 
 
-def get_function_byte_positions(
-    file: BinaryIO,  # Strictly requires binary mode file object
-    encoding: str = 'utf-8'
-) -> List[Dict[str, int]]:
+def get_function_byte_positions(file: BinaryIO,
+                                encoding: str = 'utf-8'
+                                ) -> List[Dict[str, int]]:
+    file.seek(0)
     binary_data = file.read()
     source = binary_data.decode(encoding)
 
@@ -82,6 +82,53 @@ def get_function_byte_positions(
     return functions
 
 
+def get_unprotected_expressions(file: BinaryIO,
+                                encoding: str = 'utf-8') -> List[str]:
+    """
+    Returns line numbers of expression statements (e.g., function calls) 
+    that execute outside the `if __name__ == "__main__":` guard.
+    
+    Ignores docstrings (top-level string literals).
+    """
+    file.seek(0)
+    binary_data = file.read()
+    source = binary_data.decode(encoding)
+
+    tree = ast.parse(source, mode='exec')
+    main_guard_found = False
+    unprotected_lines = []
+
+    # 1. Check if a main guard exists
+    for node in tree.body:
+        if (isinstance(node, ast.If) and isinstance(node.test, ast.Compare)
+                and isinstance(node.test.left, ast.Name)
+                and node.test.left.id == "__name__"
+                and len(node.test.comparators) == 1
+                and isinstance(node.test.comparators[0],
+                               (ast.Str, ast.Constant)) and
+            (getattr(node.test.comparators[0], 's', None) == "__main__" or
+             getattr(node.test.comparators[0], 'value', None) == "__main__")):
+            main_guard_found = True
+            break
+
+    # 2. Collect unprotected Expr nodes (ignoring docstrings)
+    for node in tree.body:
+        if isinstance(node, ast.Expr):
+            # Skip docstrings (top-level string literals)
+            if (isinstance(node.value, (ast.Str, ast.Constant)) and
+                (isinstance(getattr(node.value, 's', None), str)
+                 or isinstance(getattr(node.value, 'value', None), str))):
+                continue
+            # If no main guard exists, ALL Expr nodes are unprotected
+            if not main_guard_found:
+                unprotected_lines.append(str(node.lineno))
+            # If main guard exists, all Expr nodes are unprotected (they're outside the guard)
+            else:
+                unprotected_lines.append(str(node.lineno))
+
+    return unprotected_lines
+
+
 def display_function(function: dict, file: BinaryIO):
     if "name" not in func or "start_byte" not in func or "end_byte" not in func:
         raise ValueError("function data not found! missing keys.")
@@ -91,21 +138,35 @@ def display_function(function: dict, file: BinaryIO):
 
 
 with open(filepath, 'rb') as f:
-    functions = get_function_byte_positions(f)
-
     print("--- checking file contents ---")
     print("enter a number to check a function's contents.")
     print("ENSURE THAT YOU HAVE THE CORRECT FILE BEFORE CONTINUING.")
+    functions = get_function_byte_positions(f)
+    unprotected_lines = get_unprotected_expressions(f)
+
+    if unprotected_lines:
+        print(
+            f"\033[91mWARNING:\033[0m CODE OUTSIDE OF FUNCTIONS FOUND AT LINES \
+{', '.join(unprotected_lines)}.")
+        print("ensure that the tests can run *without intervention*!")
+        user_in = -1
+        while user_in not in ['y', 'e']:
+            user_in = input(
+                "enter 'y' to continue despite this warning, or 'e' to exit: ")
+
+        if user_in == 'e': sys.exit()
+
     user_in = -1
     while user_in != 'c':
         print(f"{len(functions)} functions found:")
         for i, func in enumerate(functions):
             print(f"{i+1}: {func['name']}")
         user_in = input(
-            "enter a number to check a function, or enter 'c' to continue: ")
+            "enter a number to check a function, 'c' to continue, or 'e' to exit: "
+        )
 
-        if user_in == 'c':
-            break
+        if user_in == 'c': break
+        elif user_in == 'e': sys.exit()
 
         try:
             user_in = int(user_in)
