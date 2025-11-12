@@ -10,7 +10,7 @@ script_dir = Path(__file__).parent
 expected_filename = 'quixo.py'
 
 filename = input(
-    "enter submission filename (include the '.py', defaults to '{expected_filename}''): "
+    f"enter submission filename (include the '.py', defaults to '{expected_filename}''): "
 )
 
 if not filename:
