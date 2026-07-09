@@ -1,4 +1,3 @@
-You can download files from GitHub by navigating to the file you want to download.
-At the top-right corner of the file preview, there is a download icon, also shown below.
+# Links
 
-![](./download-from-github.png)
+You may access the files either through the github interface, or you may find links to the tutorial content [here](https://tclbe.github.io/ps0001/content).
