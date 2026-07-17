@@ -27,7 +27,7 @@ There are many ways to do a single problem, so it is important to understand wha
 # Links
 
 * Setup and installation ([pdf](./tutorial_notes/0-installation_and_setup.pdf))
-* Tutorial 1 - variables ([notes](./tutorial_notes/1.1-variables.pdf), [accompanying code](./tutorial_notes/1.1-variables_code.py), [exercise solutions](./exercises/tut01.py))
+* Tutorial 1 - variables ([notes](./tutorial_notes/1.1-content-variables.pdf), [accompanying code](./tutorial_notes/1.1-content-variables-code.py), [exercise solutions](./exercises/tut01.py))
 * Tutorial 3 - data types ([notes](./tutorial_notes/3.1-data_types.pdf), [accompanying code](./tutorial_notes/3.1-data_types_code.py), [exercise solutions](./exercises/tut03.py))
 * Tutorial 4 - conditionals ([notes](./tutorial_notes/4.1-conditional_statements.pdf), [accompanying code](./tutorial_notes/4.1-conditional_statements_code.py), [exercise solutions](./exercises/tut04.py))
 * Tutorial 5 - iteration ([notes](./tutorial_notes/5.1-iteration.pdf), [accompanying code](./tutorial_notes/5.1-iteration_code.py), [exercise solutions](./exercises/tut05.py))
