@@ -31,5 +31,5 @@ There are many ways to do a single problem, so it is important to understand wha
 * Tutorial 3 - data types ([notes](./tutorial_notes/3.1-data_types.pdf), [accompanying code](./tutorial_notes/3.1-data_types_code.py), [exercise solutions](./exercises/tut03.py))
 * Tutorial 4 - conditionals ([notes](./tutorial_notes/4.1-conditional_statements.pdf), [accompanying code](./tutorial_notes/4.1-conditional_statements_code.py), [exercise solutions](./exercises/tut04.py))
 * Tutorial 5 - iteration ([notes](./tutorial_notes/5.1-iteration.pdf), [accompanying code](./tutorial_notes/5.1-iteration_code.py), [exercise solutions](./exercises/tut05.py))
-* Tutorial 6 - strings, lists, tuples, and dictionaries ([notes](./tutorial_notes/6.1-strings_lists_tuples_dictionaries.pdf), [accompanying code](./tutorial_notes/6.1-strings_lists_tuples_dictionaries_code.py), [exercise solutions](./exercises/tut06.py))
+* Tutorial 6 - strings, lists, tuples, and dictionaries ([notes](./tutorial_notes/6.1-content-strings_lists_tuples_dictionaries.pdf), [accompanying code](./tutorial_notes/6.1-content-strings_lists_tuples_dictionaries-code.py), [exercise solutions](./exercises/tut06.py))
 * Tutorial 7 - functions ([notes](./tutorial_notes/7.1-functions.pdf), [accompanying code](./tutorial_notes/7.1-functions_code.py), [exercise solutions](./exercises/tut07.py))

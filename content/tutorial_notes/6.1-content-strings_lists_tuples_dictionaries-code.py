@@ -1,4 +1,4 @@
-#%% The `len()` function
+#%% The len() function
 print(len("Hello, World!"))   # 13 characters
 print(len(""))                # 0 characters
 
@@ -19,7 +19,7 @@ print(x[::-1])    # characters in the string backwards, "!dlroW ,olleH"
 print("abc" + "def" + "ghi")
 print("abc" * 2 + 2 * "def")
 
-#%% Membership operator (`in`)
+#%% Membership operator (in)
 print(" " in "Hello, World!")     # True
 print("ello" in "Hello, World!")  # True
 print("abc" in "aabbcc")          # False, 'abc' does not occur.
@@ -29,7 +29,7 @@ print("abc" in "aabcc")           # True
 print("abc".upper())      # upper() acts on "abc", results in "ABC"
 print("pqr".upper())      # upper() acts on "pqr", results in "PQR"
 
-#%%
+#%% String methods
 print("abcba".find('b'))          # 1 - the index of the first occurrence of 'b'
 print("  a b c  ".strip())        # 'a b c' - with trailing spaces removed
 print("abcbcba".split('b'))       # ['a', 'c', 'c', 'a']
@@ -39,6 +39,12 @@ print('!'.join(['a', 'b', 'c']))  # 'a!b!c'
 x = "immutable"
 #x[3] = "c"               # causes an error
 y = x[:2] + "c" + x[3:]   # "imcutable"
+
+#%% The None data type (NoneType)
+print(None)
+print(type(None))
+x = print("abcdef")     # we print "abcdef", but return None
+print(x)                # x now has value None
 
 #%% Lists
 l = list('abc')               # must be some iterable object
@@ -55,7 +61,7 @@ print(l[-3:2])  # elements from -3th index to 2nd index
 print(["abc"] + ["def"] + ["ghi"])
 print(["abc"] * 2 + 2 * ["def"])
 
-#%% Membership operator (`in`)
+#%% Membership operator (in)
 print(1 in [1, 2, 3])             # True
 print("abc" in ['a', 'b', 'c'])   # False
 print("a" in ['abc'])             # False
@@ -75,7 +81,7 @@ list.remove(e)         # Remove the first occurrence of e, if found.
 list.sort()            # Sorts the list in-place. Returns nothing.
 list.reverse()         # Reverses the list in-place. Returns nothing.
 
-#%%
+#%% List methods
 l = [3, 2, 1]     # create a list
 l = l.sort()      # l.sort() sorts in-place, and evaluates to None.
 print(l)          # l is None
@@ -107,7 +113,7 @@ l = [c for c in "Hello, World!" if c.isupper()]   # ['H', 'W']
 dollars = {'alice': 839, 'bob': 1098, 'eve': 373}
 dollars['caleb'] = 4    # add a new entry
 
-#%% Membership operator (`in`)
+#%% Membership operator (in)
 print('alice' in dollars)   # True
 print('bobby' in dollars)   # False
 print(839 in dollars)       # False: 839 is a value, not a key
@@ -126,4 +132,3 @@ for e in ["this", "is", "a", "list"]:   # same for tuples
   print(e, end=" ")
 for k in {"key": "value", "dictionary": "pair"}:
   print(k)
-
