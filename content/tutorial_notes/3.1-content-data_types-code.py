@@ -10,13 +10,13 @@ print("Hello, and welcome to", module, "lab", lab)
 #print("I am commented out. I don't run.")
 print("This lab was written and developed by", author)
 
-#%% Integers (`int`)
+#%% Integers (int)
 print("12+34 =", 12+34) # an int
 print("56-78 =", 56-78) # an int
 print("12*89 =", 12*89) # an int
 print("34/67 =", 34/67) # a float
 
-#%% Strings (`str`)
+#%% Strings (str)
 first = 'this is a stirng'
 second = "this is also a string"
 third = '''i am
@@ -24,41 +24,41 @@ a multi-line
 string'''
 print(third)
 
-#%% The `type()` function
+#%% The type() function
 print(type(123))   # int
 print(type(123.0)) # float
 print(type("123")) # str (a string of numbers)
 
-#%% Implementing user interactivity - the `input()` function
+#%% Implementing user interactivity - the input() function
 print("Hello!")
-input("press a key.")
+input("type anything you want, then press the enter key: ")
 print("World!")
 
-#%%
+#%% Implementing user interactivity - the input() function
 your_name = input("What is your name? ")
 print("Hello, it is nice to meet you,", your_name)
 
-#%%
+#%% Implementing user interactivity - the input() function
 your_age = input("What is your age? ")
 print("You will be", your_age + 2, "years old in 2 years time.")
 
-#%%
+#%% Implementing user interactivity - the input() function
 three = '3'
 print("3 times 3 is", three * 3)
 three = int(three)
 print("3 times 3 is", three * 3)
 
-#%%
+#%% Implementing user interactivity - the input() function
 your_age = int(input("What is your age? "))
 print("You will be", your_age + 2, "years old in 2 years time.")
 
-#%%
+#%% Implementing user interactivity - the input() function
 float("3") + 2
 int("3") + 2
 float("3.14159") + 2
 int("3.14159") + 2
 
-#%% `NameError`
+#%% NameError
 x = 12
 print(a)
 
@@ -71,4 +71,3 @@ print("Hello!")
 
 #%% Unmatched brackets
 print())
-
