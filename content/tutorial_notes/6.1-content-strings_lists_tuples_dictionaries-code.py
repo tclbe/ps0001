@@ -73,13 +73,14 @@ l[2] = 8          # change the 2nd index to be 8
 print(l)          # [0, 1, 8, 3]
 
 #%% List methods
-list.append(e)         # Add element e to the end of the list.
-list.extend(iterable)  # Adds all the elements passed to the list.
-x = list.pop(i)        # Removes and returns the element at index i.
-list.insert(i, e)      # Inserts before index i the element e.
-list.remove(e)         # Remove the first occurrence of e, if found.
-list.sort()            # Sorts the list in-place. Returns nothing.
-list.reverse()         # Reverses the list in-place. Returns nothing.
+l = [0, 1, 2, 3]
+l.append(4)          # Add element e to the end of the list.
+l.extend([5, 6, 7])  # Adds all the elements passed to the list.
+x = list.pop(0)      # Removes and returns the element at index i.
+l.insert(0, 9)       # Inserts before index i the element e.
+l.remove(5)          # Remove the first occurrence of e, if found.
+l.sort()             # Sorts the list in-place. Returns nothing.
+l.reverse()          # Reverses the list in-place. Returns nothing.
 
 #%% List methods
 l = [3, 2, 1]     # create a list
@@ -111,7 +112,8 @@ l = [c for c in "Hello, World!" if c.isupper()]   # ['H', 'W']
 
 #%% Dictionaries
 dollars = {'alice': 839, 'bob': 1098, 'eve': 373}
-dollars['caleb'] = 4    # add a new entry
+print(dollars['alice'])  # get entry with key 'alice'
+dollars['caleb'] = 4     # add a new entry
 
 #%% Membership operator (in)
 print('alice' in dollars)   # True
@@ -119,16 +121,18 @@ print('bobby' in dollars)   # False
 print(839 in dollars)       # False: 839 is a value, not a key
 
 #%% Dictionary methods
-dict.items()            # Get all key:value pairs in the dictionary
-dict.keys()             # Get all keys of the dictionary
-dict.values()           # Get all values in the dictionary
-dict.clear()            # Empty the dictionary
-dict.update(new_dict)   # Update dict with key:value pairs in new_dict
+d = {"a": 123, "b": 456, "c": 789}
+d.items()            # Get all key:value pairs in the dictionary
+d.keys()             # Get all keys of the dictionary
+d.values()           # Get all values in the dictionary
+d.clear()            # Empty the dictionary
+new_dict = {"d": 0, 123: "efg"}
+d.update(new_dict)   # Update dict with key:value pairs in new_dict
 
 #%% Iteration
 for char in "this is a string":
   print(char, end="")
 for e in ["this", "is", "a", "list"]:   # same for tuples
   print(e, end=" ")
-for k in {"key": "value", "dictionary": "pair"}:
-  print(k)
+for k, v in {"key": "value", "dictionary": "pair"}:
+  print(k, v)
