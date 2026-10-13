@@ -6,8 +6,8 @@ def get_random_valid_move(board, turn):
     val_moves = get_valid_moves(board, turn)
     return random.choice(val_moves)
 
-def generate_board(nrows):
-    board = random.choices((0, 1, 2), weights=(7,2,2), k=nrows*7)
+def generate_board(nrows, weights=(7, 2, 2)):
+    board = random.choices((0, 1, 2), weights=weights, k=nrows*7)
     return push_tiles_down(board)
 
 def push_tiles_down(board):
@@ -64,7 +64,7 @@ with open("./connect4_tests_caleb.py", "w") as f:
     f.write("count = 0\n")
     for i in range(1, n_tests + 1):
         nrows = random.randint(6, 13)
-        board = generate_board(nrows)
+        board = generate_board(nrows, (2, 4, 4))
 
         turn = random.randint(1, 2)
         col = random.randint(0, 6)
